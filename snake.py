@@ -54,13 +54,7 @@ class Snake:
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
 
-
-    """# interrompe o jogo quando a cabeça da cobra alcança as bordas da tela
-    if (segments[0].xcor() >= 300 or segments[0].xcor() <= -300 or 
-        segments[0].ycor() >= 300 or segments[0].ycor() <= -300):
-        game_is_on = False
-
-    # interrompe o jogo quando a cabeça da cobra encosta em qualquer parte de seu corpo 
+    """# interrompe o jogo quando a cabeça da cobra encosta em qualquer parte de seu corpo 
     for a in range(1, len(segments)):
         if segments[0].distance(segments[a]) < 10:
             game_is_on = False"""
