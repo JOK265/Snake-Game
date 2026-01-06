@@ -1,5 +1,4 @@
 from turtle import Turtle
-from point import Point
 
 STARTING_POSITIONS = [(0,0), (-20,0), (-40,0)]
 MOVE_DISTANCE = 20
@@ -55,12 +54,8 @@ class Snake:
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
 
-    """if segments[0].distance(Point.point) < 15:
-        Point.criar_novo_ponto()
-        criar_novo_segmento(segments[-1].pos())
 
-
-    # interrompe o jogo quando a cabeça da cobra alcança as bordas da tela
+    """# interrompe o jogo quando a cabeça da cobra alcança as bordas da tela
     if (segments[0].xcor() >= 300 or segments[0].xcor() <= -300 or 
         segments[0].ycor() >= 300 or segments[0].ycor() <= -300):
         game_is_on = False
