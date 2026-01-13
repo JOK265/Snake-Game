@@ -51,9 +51,10 @@ while game_is_on:
         snake.head.ycor() > 280 or snake.head.ycor() < -280):
         scoreboard.game_over()
         game_is_on = False
-
-    for a in range(1, len(snake.segments)):
-        if snake.segments[0].distance(snake.segments[a]) < 10:
+        
+    # acaba o jogo quando a cobra colide com ela mesma
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
             scoreboard.game_over()
             game_is_on = False
 
