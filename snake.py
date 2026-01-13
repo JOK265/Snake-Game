@@ -18,12 +18,17 @@ class Snake:
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            segment = Turtle('square')
-            segment.color('white')
-            segment.penup()
-            segment.teleport(position[0], position[1])
-            self.segments.append(segment)
+            self.add_segment(position)
 
+    def add_segment(self, position):
+        segment = Turtle('square')
+        segment.color('white')
+        segment.penup()
+        segment.teleport(position[0], position[1])
+        self.segments.append(segment)
+
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         for a in range(len(self.segments) - 1, 0, -1):
@@ -31,8 +36,6 @@ class Snake:
             new_y = self.segments[a - 1].ycor()
             self.segments[a].teleport(new_x, new_y)
         self.head.forward(MOVE_DISTANCE)
-
-
 
     def left(self):
         "Altera o heading do objeto para o oeste"
@@ -53,14 +56,3 @@ class Snake:
         "Altera o heading do objeto para o sul" 
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
-
-
-    """# interrompe o jogo quando a cabeça da cobra alcança as bordas da tela
-    if (segments[0].xcor() >= 300 or segments[0].xcor() <= -300 or 
-        segments[0].ycor() >= 300 or segments[0].ycor() <= -300):
-        game_is_on = False
-
-    # interrompe o jogo quando a cabeça da cobra encosta em qualquer parte de seu corpo 
-    for a in range(1, len(segments)):
-        if segments[0].distance(segments[a]) < 10:
-            game_is_on = False"""
