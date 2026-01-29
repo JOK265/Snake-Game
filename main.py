@@ -40,6 +40,8 @@ while game_is_on:
 
     snake.move()
 
+
+
     # se a cobra pegar um ponto, cria um novo ponto na tela e aumenta o score
     if snake.head.distance(point) < 15:
         snake.extend()
@@ -57,6 +59,11 @@ while game_is_on:
         if snake.head.distance(segment) < 10:
             scoreboard.game_over()
             game_is_on = False
+
+    if scoreboard.score > scoreboard.high_score:
+        scoreboard.high_score = scoreboard.score
+        scoreboard.update_high_score(scoreboard.high_score)
+
 
 
 screen.exitonclick()
