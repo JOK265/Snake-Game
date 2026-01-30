@@ -8,7 +8,8 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.high_score = self.get_high_score()
+        with open("high_score.txt", "r") as arq:
+            self.high_score = int(arq.read().strip())
         self.pencolor("white")
         self.teleport(0, 270)
         self.update_scoreboard()
@@ -23,10 +24,6 @@ class Scoreboard(Turtle):
         self.clear()
         self.update_scoreboard()
 
-    def get_high_score(self):
-        with open("high_score.txt", "r") as arq:
-            return int(arq.read().strip())
-
     def update_high_score(self, new_value):
         with open("high_score.txt", "w") as arq:
             arq.write(str(new_value))
@@ -37,3 +34,7 @@ class Scoreboard(Turtle):
         self.speed(1)
         self.hideturtle()
         self.write(arg= f"Game Over", move=False, align=ALIGNMENT, font=('Arial', 24, 'bold'))
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("high_score.txt", "w") as arq:
+                arq.write(str(self.high_score))
